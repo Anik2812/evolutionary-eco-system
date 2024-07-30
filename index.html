@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolutionary Ecosystem Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="simulation-container">
+        <canvas id="ecosystem"></canvas>
+        <div id="control-panel">
+            <h1>Evolutionary Ecosystem</h1>
+            <div id="stats">
+                <p>Generation: <span id="generation">1</span></p>
+                <p>Population: <span id="population">0</span></p>
+                <p>Dominant Trait: <span id="dominant-trait">None</span></p>
+            </div>
+            <div id="controls">
+                <button id="start-stop">Start/Stop</button>
+                <button id="add-food">Add Food</button>
+                <button id="add-predator">Add Predator</button>
+            </div>
+            <div id="environment-controls">
+                <label for="temperature">Temperature:</label>
+                <input type="range" id="temperature" min="0" max="100" value="50">
+                <label for="humidity">Humidity:</label>
+                <input type="range" id="humidity" min="0" max="100" value="50">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
