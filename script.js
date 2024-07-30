@@ -9,6 +9,8 @@ let food = [];
 let predators = [];
 let generation = 1;
 let isSimulationRunning = false;
+let selectedCreature = null;
+let mutationRate = 0.1;
 
 class Creature {
     constructor(x, y) {
@@ -49,13 +51,20 @@ class Creature {
             const childY = this.y + (Math.random() - 0.5) * 20;
             const child = new Creature(childX, childY);
             child.color = this.color;
-            if (Math.random() < 0.1) {
+            if (Math.random() < mutationRate) {
                 child.speed = Math.max(0.5, Math.min(5, this.speed + (Math.random() - 0.5)));
             } else {
                 child.speed = this.speed;
             }
             creatures.push(child);
         }
+    }
+
+    select() {
+        selectedCreature = this;
+        document.getElementById('creature-energy').textContent = this.energy.toFixed(2);
+        document.getElementById('creature-speed').textContent = this.speed.toFixed(2);
+        document.getElementById('creature-size').textContent = this.size.toFixed(2);
     }
 }
 
@@ -72,7 +81,7 @@ function createPredator() {
 }
 
 function drawFood() {
-    ctx.fillStyle = '#00ff00';
+    ctx.fillStyle = '#89dceb';
     food.forEach(f => {
         ctx.beginPath();
         ctx.arc(f.x, f.y, 2, 0, Math.PI * 2);
@@ -81,7 +90,7 @@ function drawFood() {
 }
 
 function drawPredators() {
-    ctx.fillStyle = '#ff0000';
+    ctx.fillStyle = '#f38ba8';
     predators.forEach(p => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
@@ -154,6 +163,16 @@ function initializeCreatures() {
     }
 }
 
+function updateRangeValue(inputId, spanId) {
+    const input = document.getElementById(inputId);
+    const span = document.getElementById(spanId);
+    span.textContent = input.value;
+    input.addEventListener('input', () => {
+        span.textContent = input.value;
+    });
+}
+
+// Event Listeners
 document.getElementById('start-stop').addEventListener('click', () => {
     isSimulationRunning = !isSimulationRunning;
     if (isSimulationRunning) updateSimulation();
@@ -164,6 +183,15 @@ document.getElementById('add-food').addEventListener('click', () => {
 });
 
 document.getElementById('add-predator').addEventListener('click', createPredator);
+
+document.getElementById('reset').addEventListener('click', () => {
+    creatures = [];
+    food = [];
+    predators = [];
+    generation = 1;
+    initializeCreatures();
+    updateStats();
+});
 
 document.getElementById('temperature').addEventListener('input', (e) => {
     const temp = e.target.value;
@@ -179,5 +207,27 @@ document.getElementById('humidity').addEventListener('input', (e) => {
     });
 });
 
+document.getElementById('mutation-rate').addEventListener('input', (e) => {
+    mutationRate = e.target.value / 100;
+});
+
+canvas.addEventListener('click', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    for (let creature of creatures) {
+        const distance = Math.hypot(creature.x - x, creature.y - y);
+        if (distance <= creature.size) {
+            creature.select();
+            break;
+        }
+    }
+});
+
+// Initialize
+updateRangeValue('temperature', 'temp-value');
+updateRangeValue('humidity', 'humidity-value');
+updateRangeValue('mutation-rate', 'mutation-value');
 initializeCreatures();
 updateSimulation();

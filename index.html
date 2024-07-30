@@ -20,12 +20,21 @@
                 <button id="start-stop">Start/Stop</button>
                 <button id="add-food">Add Food</button>
                 <button id="add-predator">Add Predator</button>
+                <button id="reset">Reset Simulation</button>
             </div>
             <div id="environment-controls">
-                <label for="temperature">Temperature:</label>
+                <label for="temperature">Temperature: <span id="temp-value">50</span>°C</label>
                 <input type="range" id="temperature" min="0" max="100" value="50">
-                <label for="humidity">Humidity:</label>
+                <label for="humidity">Humidity: <span id="humidity-value">50</span>%</label>
                 <input type="range" id="humidity" min="0" max="100" value="50">
+                <label for="mutation-rate">Mutation Rate: <span id="mutation-value">10</span>%</label>
+                <input type="range" id="mutation-rate" min="0" max="100" value="10">
+            </div>
+            <div id="creature-info">
+                <h2>Selected Creature</h2>
+                <p>Energy: <span id="creature-energy">N/A</span></p>
+                <p>Speed: <span id="creature-speed">N/A</span></p>
+                <p>Size: <span id="creature-size">N/A</span></p>
             </div>
         </div>
     </div>
