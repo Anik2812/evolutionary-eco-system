@@ -5,8 +5,8 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: 'Roboto', sans-serif;
-    background: #1a1a2e;
-    color: #e0e0e0;
+    background: #1e1e2e;
+    color: #cdd6f4;
     overflow: hidden;
 }
 
@@ -17,12 +17,12 @@ body, html {
 
 #ecosystem {
     flex-grow: 1;
-    background: #16213e;
+    background: #181825;
 }
 
 #control-panel {
     width: 300px;
-    background: rgba(26, 26, 46, 0.9);
+    background: rgba(30, 30, 46, 0.9);
     padding: 20px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
@@ -30,21 +30,21 @@ body, html {
 
 h1, h2 {
     margin-top: 0;
-    color: #4ecca3;
+    color: #cba6f7;
     text-align: center;
-    text-shadow: 0 0 10px rgba(78, 204, 163, 0.3);
+    text-shadow: 0 0 10px rgba(203, 166, 247, 0.3);
 }
 
 #stats, #controls, #environment-controls, #creature-info {
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(49, 50, 68, 0.6);
     padding: 15px;
     border-radius: 8px;
 }
 
 button {
-    background: #4ecca3;
-    color: #1a1a2e;
+    background: #89dceb;
+    color: #1e1e2e;
     border: none;
     padding: 10px;
     margin: 5px;
@@ -56,17 +56,18 @@ button {
 }
 
 button:hover {
-    background: #45b393;
-    box-shadow: 0 0 10px rgba(78, 204, 163, 0.5);
+    background: #74c7ec;
+    box-shadow: 0 0 10px rgba(137, 220, 235, 0.5);
 }
 
 input[type="range"] {
     width: 100%;
     margin: 10px 0;
     -webkit-appearance: none;
-    background: #2c2c44;
+    background: #313244;
     outline: none;
     border-radius: 15px;
+    height: 5px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -74,7 +75,7 @@ input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #4ecca3;
+    background: #cba6f7;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -82,7 +83,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background: #4ecca3;
+    background: #cba6f7;
     cursor: pointer;
     border-radius: 50%;
 }
@@ -90,14 +91,14 @@ input[type="range"]::-moz-range-thumb {
 label {
     display: block;
     margin-top: 10px;
-    color: #a0a0a0;
+    color: #bac2de;
 }
 
 #creature-info {
-    background: rgba(78, 204, 163, 0.1);
+    background: rgba(203, 166, 247, 0.1);
 }
 
 #creature-info h2 {
-    color: #e0e0e0;
+    color: #cdd6f4;
     text-shadow: none;
 }
